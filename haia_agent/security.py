@@ -279,9 +279,16 @@ class HashWitness:
 
         return True, ""
 
-    def should_witness(self, sequence_number: int) -> bool:
-        """Check if this sequence number triggers a witness checkpoint."""
-        return sequence_number % self.witness_interval == 0
+    def should_witness(self, sequence_number: int, force: bool = False) -> bool:
+        """Check if this sequence number triggers a witness checkpoint.
+
+        Args:
+            sequence_number: Current record sequence number.
+            force: If True, witness this record regardless of interval.
+                   Use for high-value or critical-severity transactions.
+                   v0.6.1: Per-transaction override. MiniMax AI review, Issue 3.
+        """
+        return force or (sequence_number % self.witness_interval == 0)
 
     def record_witness(
         self,
@@ -399,6 +406,18 @@ class AuditEncryption:
                 self._key = key.decode()
                 self._fernet = Fernet(key)
         except ImportError:
+            # v0.6.1: Explicit warning when cryptography library is missing.
+            # Previously this fallback activated silently, allowing production
+            # deployments to run with weaker obfuscation without operator
+            # awareness. MiniMax AI review, Concern 6.
+            import sys
+            print(
+                "WARNING [GOPEL]: cryptography library not installed. "
+                "Audit encryption falling back to HMAC-based obfuscation "
+                "(NOT production-grade). Install with: "
+                "pip install 'cryptography>=41.0.0'",
+                file=sys.stderr,
+            )
             # Fallback: HMAC-based obfuscation (not production-grade)
             if not encryption_key:
                 self._key = secrets.token_hex(32)

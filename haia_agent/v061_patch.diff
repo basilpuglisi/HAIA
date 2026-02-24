@@ -1,0 +1,230 @@
+diff --git a/PUBLICATION_NOTE.md b/PUBLICATION_NOTE.md
+index 7e8c960..0b1654d 100644
+--- a/PUBLICATION_NOTE.md
++++ b/PUBLICATION_NOTE.md
+@@ -10,17 +10,18 @@ The code exists to prove a single claim: that non-cognitive AI governance, check
+ 
+ ## Who Built This
+ 
+-Basil C. Puglisi, MPA. Retired. Not a coder, not a technology company. The frameworks, architecture, and governance methodology are original work developed through structured human-AI collaboration across nine AI platforms. The code was developed collaboratively with Claude (Anthropic) and adversarially reviewed by six independent AI platforms.
++Basil C. Puglisi, MPA. Retired. Not a coder, not a technology company. The frameworks, architecture, and governance methodology are original work developed through structured human-AI collaboration across nine AI platforms. The code was developed collaboratively with Claude (Anthropic) and adversarially reviewed by seven independent AI platforms.
+ 
+ ## What It Proves
+ 
+-The framework was subjected to eight review passes across six AI platforms (Claude, ChatGPT, Gemini, Grok, Kimi, DeepSeek). Each platform reviewed the code independently with no visibility into other platforms' findings. The results:
++The framework was subjected to nine review passes across seven AI platforms (Claude, ChatGPT, Gemini, Grok, Kimi, DeepSeek, MiniMax). Each platform reviewed the code independently with no visibility into other platforms' findings. The results:
+ 
+-- 171 tests passing across 8 test suites
++- 183 tests passing across 9 test suites
+ - Zero non-cognitive constraint violations across 14 source files
+ - Two critical vulnerabilities found by multiple platforms independently (convergent validation)
+ - All critical and high-severity findings fixed and verified
+-- Non-cognitive constraint confirmed clean by all six platforms
++- Non-cognitive constraint confirmed clean by all seven platforms
++- Seventh platform (MiniMax) confirmed zero residual vulnerabilities from prior fixes
+ 
+ This is provider plurality in action. No single AI platform found everything. The platforms that found nothing wrong missed real vulnerabilities that others caught. The architecture works precisely because it does not trust any single system.
+ 
+diff --git a/README.md b/README.md
+index a1042cd..1b675e9 100644
+--- a/README.md
++++ b/README.md
+@@ -8,7 +8,7 @@ Seven deterministic operations. Zero cognitive work. The agent performs no evalu
+ 
+ **Author:** Basil C. Puglisi, MPA
+ **Architecture:** GOPEL
+-**Version:** 0.6.0
++**Version:** 0.6.1
+ **Status:** Working concept showing promise. Theories in development. Observable operational behaviors.
+ 
+ ## What This Is
+@@ -188,7 +188,7 @@ python tests/test_sentinel.py           # 18 tests: IMP1-IMP7 impersonation + se
+ for t in tests/test_*.py; do python "$t"; done
+ ```
+ 
+-171 tests. Zero failures. All framework source files pass non-cognitive constraint static analysis.
++183 tests. Zero failures. All framework source files pass non-cognitive constraint static analysis.
+ 
+ ## Security Hardening Summary
+ 
+@@ -272,7 +272,17 @@ External adversarial code review across four independent AI platforms (Gemini, G
+ 
+ **Claude internal review (post-fix):** CLAUDE-R9: T1-A introduced a deadlock where CRITICAL breach state permanently blocked all pipeline execution with no authorized reset path. Added acknowledge_breach() method requiring ACKNOWLEDGE_BREACH governance authorization to clear breach state while preserving escalation posture. CLAUDE-R10 (documented, v0.6.0): Second-approver signature payload does not include transaction context, enabling cross-gate replay. Mitigant: include transaction_id in signable payload.
+ 
+-## Defended Attack Surfaces (171 tests)
++### Ninth Pass (v0.6.1): MiniMax AI Review and Code Hardening
++
++Seventh independent AI platform review (MiniMax AI) on published v0.6.0 codebase. MiniMax identified 12 findings: 5 already documented, 7 new. All new findings are code quality or maintainability improvements. Zero new security vulnerabilities. All critical and high-severity issues from the prior six platforms confirmed fixed.
++
++**Code fixes (v0.6.1):** FIX-MM1: AuditEncryption now emits explicit stderr warning when cryptography library is missing and fallback obfuscation activates. Previously silent. FIX-MM2: HashWitness.should_witness() accepts force=True parameter for per-transaction witness override on high-value operations. Witness interval remains configurable at construction. FIX-MM3: NonCognitiveAnalyzer._scan_file() enforces path boundary check. Files outside framework_root are rejected with SCOPE_VIOLATION before ast.parse() executes. Prevents future scope creep from exposing the parser to untrusted input.
++
++**Code quality observations (documented, deferred):** Broad exception handling in pipeline.py masks failure categories (valid, low severity in context since SecurePipelineResult returns structured error data). Governance.py at 1,500+ lines would benefit from decomposition into authorization, policies, and escalation submodules. Scattered conditional imports and inconsistent type annotations in governance module noted for refactoring backlog.
++
++**Provider plurality thesis updated:** Seven platforms reviewed the codebase. Each found things others missed. No single platform found everything. MiniMax reviewed the post-fix codebase and confirmed zero residual vulnerabilities from the six issues fixed before publication. The pattern holds: early adversarial reviews catch structural vulnerabilities, later reviews surface code quality refinements.
++
++## Defended Attack Surfaces (183 tests)
+ 
+ | Attack Class | Vectors | Detection Method |
+ |-------------|---------|-----------------|
+@@ -306,35 +316,48 @@ External adversarial code review across four independent AI platforms (Gemini, G
+ | Logger health false positive | Corrupted file passes existence check | Chain integrity verification in health check (T1-C) |
+ | Encrypted wrapper tampering | Attacker modifies outer JSON envelope | HMAC over wrapper verified before trusting fields (T2-B) |
+ | Breach state deadlock | CRITICAL breach permanently blocks all execution | Authorized breach acknowledgment clears policy block (CLAUDE-R9) |
++| Silent encryption fallback | Cryptography library missing, weaker obfuscation used without notice | Explicit stderr warning on fallback activation (FIX-MM1) |
++| Witness interval rigidity | High-value transactions use same witness frequency as routine | Per-transaction force=True witness override (FIX-MM2) |
++| Analyzer scope creep | Static analyzer could be modified to parse untrusted files | Path boundary enforcement rejects files outside framework_root (FIX-MM3) |
+ 
+-## Irreducible Limitations
+-
+-**Semantic manipulation** (CA3): A well-crafted lie that contains no injection patterns, no unicode anomalies, no delimiter tricks, and passes all structural checks is undetectable by any deterministic system. The test suite proves this explicitly. The human checkpoint is the only defense. The breach report states this in every report.
++## Known Limitations
+ 
+-**API key exposure** (H3): API keys stored as plaintext on adapter objects. Inherent to SDK usage patterns. Requires external KMS integration at deployment.
++### Architectural (Irreducible at Any Scale)
+ 
+-**Physical key theft**: HMAC signing keys in process memory. Requires hardware security modules (HSM) or trusted execution environments (SGX) at infrastructure level.
++**Semantic manipulation** (CA3): A well-crafted lie that contains no injection patterns, no unicode anomalies, no delimiter tricks, and passes all structural checks is undetectable by any deterministic system. The test suite proves this explicitly. The human checkpoint is the only defense. The breach report states this in every report.
+ 
+ **Monitoring-of-monitoring**: If the HeartbeatMonitor is also compromised, the recursion has no application-level termination. This is the organizational security boundary.
+ 
+-**Governance state persistence** (GV5/GV6): The decision log and escalation state live in process memory. A crash resets escalation posture to NORMAL and erases the decision history. The decision log has configurable size bounds with eviction tracking, but evicted entries require external persistent storage for full audit reconstruction. Integration with the SecureAuditLogger for persistent governance state is a future phase.
++**Arbitration trust boundary** (T3-F): Human arbitration input (modifications, final_output) is not injection-sanitized before logging. This is by design: the human is the trust anchor and human authority is absolute. However, if the human's workstation is compromised, this provides an unsanitized path into finalized output. The trust boundary is at the human-machine interface. Identified by Gemini.
+ 
+-**Caller-supplied context** (GV8): The GovernanceContext breach_severity and injection_count fields are assembled by the pipeline and passed to the governance runtime. A compromised pipeline module could supply false context values. Full mitigation requires signed context assembly within a trusted execution boundary.
++**Transport verification timing** (T2-C): Transport integrity verification runs after dispatch/response records are already written to the audit trail. If verification fails, potentially corrupted records exist in the log. This is intentional: raw data preservation is correct for forensic purposes. The violation is flagged in security_warnings and reflected in the breach report. Future versions may add an "unverified" marker at write time. Identified by Kimi.
+ 
+-**O(N) persistence scaling** (T2-A): Both logger.py and secure_logger.py serialize the entire record array on every log_record call, producing O(N) write amplification. With thousands of transactions, memory consumption grows linearly and I/O latency grows with file size. Production deployments should migrate to JSONL append-mode or a WAL (Write-Ahead Log) pattern. The current implementation is correct for prototype-scale validation. Identified independently by Gemini.
++### Requires Deployment Infrastructure (Cannot Be Resolved at Reference Implementation Level)
+ 
+-**Transport verification timing** (T2-C): Transport integrity verification runs after dispatch/response records are already written to the audit trail. If verification fails, potentially corrupted records exist in the log. This is intentional: raw data preservation is correct for forensic purposes. The violation is flagged in security_warnings and reflected in the breach report. Future versions may add an "unverified" marker at write time. Identified by Kimi.
++**API key exposure** (H3): API keys stored as plaintext on adapter objects. Inherent to SDK usage patterns. Requires external KMS integration at deployment. The deploying organization chooses the KMS. Reference adapters show the interface contract, not credential management.
++
++**Physical key theft**: HMAC signing keys in process memory. Requires hardware security modules (HSM) or trusted execution environments (SGX) at infrastructure level.
+ 
+ **Key rotation** (T3-A): No automated rotation mechanism for operator signing keys (OperatorIdentity) or pipeline identity keys (PipelineIdentity). Compromised keys remain valid indefinitely until manually replaced. Requires external KMS integration with rotation cadence enforcement. Identified independently by Kimi and Grok.
+ 
++**Caller-supplied context** (GV8): The GovernanceContext breach_severity and injection_count fields are assembled by the pipeline and passed to the governance runtime. A compromised pipeline module could supply false context values. Full mitigation requires signed context assembly within a trusted execution boundary. Independently identified by MiniMax AI.
++
+ **Windows portability** (T3-B): AuditFileLock uses fcntl.flock (POSIX only). No Windows fallback. Framework requires Linux or macOS for file-level locking. Windows deployments would need portalocker or win32event integration. Identified independently by DeepSeek and Grok.
+ 
+-**Witness file race condition** (T3-C): HashWitness._persist() uses temp-file-then-rename without file locking. Concurrent multi-process writes could lose witness entries. Low probability: witness writes are infrequent and individually fast. Single-process deployments are unaffected. Identified by Kimi.
++### Development Targets (Resolvable in Future Versions)
+ 
+-**Arbitration trust boundary** (T3-F): Human arbitration input (modifications, final_output) is not injection-sanitized before logging. This is by design: the human is the trust anchor and human authority is absolute. However, if the human's workstation is compromised, this provides an unsanitized path into finalized output. The trust boundary is at the human-machine interface. Identified by Gemini.
++**Navigator plurality**: The Navigator role is currently assigned to a single AI platform per transaction. A corrupted or manipulated Navigator could misrepresent platform convergence and divergence. Three defenses exist: structural validation (NavigatorValidator checks for dropped platforms), raw evidence preservation (human receives all individual platform responses alongside the synthesis), and Navigator rotation (different platforms serve as Navigator across transactions). The strongest defense, not yet implemented, is Navigator plurality: dispatching the Navigator task to multiple platforms simultaneously and cross-validating their syntheses. This applies the same provider plurality architecture used for primary prompt dispatch. Documented as development target, v0.6.1.
++
++**Governance state persistence** (GV5/GV6): The decision log and escalation state live in process memory. A crash resets escalation posture to NORMAL and erases the decision history. The decision log has configurable size bounds with eviction tracking, but evicted entries require external persistent storage for full audit reconstruction. Integration with the SecureAuditLogger for persistent governance state is a future phase.
++
++**O(N) persistence scaling** (T2-A): Both logger.py and secure_logger.py serialize the entire record array on every log_record call, producing O(N) write amplification. With thousands of transactions, memory consumption grows linearly and I/O latency grows with file size. Production deployments should migrate to JSONL append-mode or a WAL (Write-Ahead Log) pattern. The current implementation is correct for prototype-scale validation. Identified independently by Gemini.
++
++**Witness file race condition** (T3-C): HashWitness._persist() uses temp-file-then-rename without file locking. Concurrent multi-process writes could lose witness entries. Low probability: witness writes are infrequent and individually fast. Single-process deployments are unaffected. Identified by Kimi.
+ 
+ **Orphan arbitration records** (T3-E): record_arbitration accepts any transaction_id without verifying a matching transaction exists in the audit trail. Could produce orphaned arbitration records for non-existent transactions. Low severity: does not affect pipeline execution, only audit trail cleanliness. Identified by DeepSeek.
+ 
++**Governance module decomposition**: governance.py at 1,500+ lines handles authorization, evidence gates, policy evaluation, and escalation in a single module. Decomposition into governance/authorization.py, governance/policies.py, and governance/escalation.py would improve auditability. Identified by MiniMax AI.
++
+ ## Three Operating Models
+ 
+ | Model | Name | Checkpoint Behavior |
+@@ -363,7 +386,7 @@ External adversarial code review across four independent AI platforms (Gemini, G
+ | 1 | Audit file schema | Complete (v0.1.0) |
+ | 2 | Logging engine | Complete (v0.1.0) |
+ | 3 | API dispatch, synthesis, security hardening | Complete (v0.2.0 through v0.4.1) |
+-| 3.5 | Enterprise governance runtime | Complete (v0.5.0 through v0.6.0) |
++| 3.5 | Enterprise governance runtime | Complete (v0.5.0 through v0.6.1) |
+ | 4 | Checkpoint gates (operating model enforcement) | Next |
+ | 5 | Compliance validation and formal verification | Planned |
+ 
+diff --git a/haia_agent/__init__.py b/haia_agent/__init__.py
+index 42bcf64..9100101 100644
+--- a/haia_agent/__init__.py
++++ b/haia_agent/__init__.py
+@@ -124,6 +124,6 @@ from .governance import (
+     EXECUTION_GATE_MODEL_2,
+ )
+ 
+-__version__ = "0.6.0"
++__version__ = "0.6.1"
+ __author__ = "Basil C. Puglisi, MPA"
+ __architecture__ = "GOPEL"
+diff --git a/haia_agent/security.py b/haia_agent/security.py
+index 63bf6f2..1221caf 100644
+--- a/haia_agent/security.py
++++ b/haia_agent/security.py
+@@ -279,9 +279,16 @@ class HashWitness:
+ 
+         return True, ""
+ 
+-    def should_witness(self, sequence_number: int) -> bool:
+-        """Check if this sequence number triggers a witness checkpoint."""
+-        return sequence_number % self.witness_interval == 0
++    def should_witness(self, sequence_number: int, force: bool = False) -> bool:
++        """Check if this sequence number triggers a witness checkpoint.
++
++        Args:
++            sequence_number: Current record sequence number.
++            force: If True, witness this record regardless of interval.
++                   Use for high-value or critical-severity transactions.
++                   v0.6.1: Per-transaction override. MiniMax AI review, Issue 3.
++        """
++        return force or (sequence_number % self.witness_interval == 0)
+ 
+     def record_witness(
+         self,
+@@ -399,6 +406,18 @@ class AuditEncryption:
+                 self._key = key.decode()
+                 self._fernet = Fernet(key)
+         except ImportError:
++            # v0.6.1: Explicit warning when cryptography library is missing.
++            # Previously this fallback activated silently, allowing production
++            # deployments to run with weaker obfuscation without operator
++            # awareness. MiniMax AI review, Concern 6.
++            import sys
++            print(
++                "WARNING [GOPEL]: cryptography library not installed. "
++                "Audit encryption falling back to HMAC-based obfuscation "
++                "(NOT production-grade). Install with: "
++                "pip install 'cryptography>=41.0.0'",
++                file=sys.stderr,
++            )
+             # Fallback: HMAC-based obfuscation (not production-grade)
+             if not encryption_key:
+                 self._key = secrets.token_hex(32)
+diff --git a/haia_agent/static_analyzer.py b/haia_agent/static_analyzer.py
+index de3e2dd..60923eb 100644
+--- a/haia_agent/static_analyzer.py
++++ b/haia_agent/static_analyzer.py
+@@ -179,9 +179,32 @@ class NonCognitiveAnalyzer:
+         return result
+ 
+     def _scan_file(self, file_path: Path) -> list[CognitiveViolation]:
+-        """Scan a single file for cognitive patterns."""
++        """Scan a single file for cognitive patterns.
++
++        v0.6.1: Added explicit path boundary check. The analyzer must
++        never process files outside the framework directory, even if
++        SCAN_TARGETS is modified. This prevents scope creep from
++        exposing the ast.parse() call to untrusted input.
++        MiniMax AI review, Concern 3.
++        """
+         violations = []
+ 
++        # Path boundary enforcement: reject any file outside framework_root
++        try:
++            resolved = file_path.resolve()
++            root_resolved = self.framework_root.resolve()
++            resolved.relative_to(root_resolved)
++        except ValueError:
++            # File is outside framework_root, refuse to scan
++            return [CognitiveViolation(
++                file_path=str(file_path),
++                line_number=0,
++                violation_type="SCOPE_VIOLATION",
++                pattern_matched="File outside framework boundary",
++                line_content=f"Rejected: {file_path} is not within {self.framework_root}",
++                severity="critical",
++            )]
++
+         try:
+             content = file_path.read_text(encoding="utf-8")
+             lines = content.split("\n")

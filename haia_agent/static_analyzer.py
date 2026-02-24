@@ -179,8 +179,31 @@ class NonCognitiveAnalyzer:
         return result
 
     def _scan_file(self, file_path: Path) -> list[CognitiveViolation]:
-        """Scan a single file for cognitive patterns."""
+        """Scan a single file for cognitive patterns.
+
+        v0.6.1: Added explicit path boundary check. The analyzer must
+        never process files outside the framework directory, even if
+        SCAN_TARGETS is modified. This prevents scope creep from
+        exposing the ast.parse() call to untrusted input.
+        MiniMax AI review, Concern 3.
+        """
         violations = []
+
+        # Path boundary enforcement: reject any file outside framework_root
+        try:
+            resolved = file_path.resolve()
+            root_resolved = self.framework_root.resolve()
+            resolved.relative_to(root_resolved)
+        except ValueError:
+            # File is outside framework_root, refuse to scan
+            return [CognitiveViolation(
+                file_path=str(file_path),
+                line_number=0,
+                violation_type="SCOPE_VIOLATION",
+                pattern_matched="File outside framework boundary",
+                line_content=f"Rejected: {file_path} is not within {self.framework_root}",
+                severity="critical",
+            )]
 
         try:
             content = file_path.read_text(encoding="utf-8")

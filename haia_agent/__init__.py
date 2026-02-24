@@ -124,6 +124,6 @@ from .governance import (
     EXECUTION_GATE_MODEL_2,
 )
 
-__version__ = "0.6.0"
+__version__ = "0.6.1"
 __author__ = "Basil C. Puglisi, MPA"
 __architecture__ = "GOPEL"
