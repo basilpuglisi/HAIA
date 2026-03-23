@@ -47,7 +47,7 @@ The Navigator is a cognitive function that lives outside GOPEL entirely in all t
 
 Four specification extensions govern capabilities beyond the base architecture. Each extension preserves the non-cognitive constraint and does not alter the seven deterministic operations.
 
-**Checkpoint Information Chain Extension (CICE) v1.1.** Addresses the checkpoint information chain gap: how governance signals flow from platform response through Navigator synthesis to human checkpoint. Three connected specifications: Deterministic Metadata Comparison (DMC) produces pre-checkpoint anomaly summaries by comparing structured field values across Response Records and Navigation Records; Navigator Plurality Protocol (NPP) dispatches the Navigator synthesis task to multiple independent platforms and cross-validates their syntheses; Explicit Delegation Boundaries (EDB) forces any reduction in checkpoint review depth at production scale into an explicit, auditable CBG decision with mandatory rationale, expiry, and escalation triggers. Statistical Process Control monitors the governance system itself for drift and triggers automatic escalation when configured ceilings are exceeded. The extension names the constitutional wall between AI Governance and Responsible AI: at production scale, volume pressure silently converts governance checkpoints into rubber stamps without anyone making an explicit decision to accept that trade-off, and the extension forces that decision into the open with an auditable record. Gaps surfaced through external architectural review by Krzysztof Olbiński, Founder of Homo Digital. Three-platform CAIPR review (Kimi, Grok, ChatGPT) with zero rejections and 3-of-3 approval convergence. Code implementation scoped as a separate development target.
+**Checkpoint Information Chain Extension (CICE) v1.2.** Addresses the checkpoint information chain gap: how governance signals flow from platform response through Navigator synthesis to human checkpoint. Three connected specifications: Deterministic Metadata Comparison (DMC) produces pre-checkpoint anomaly summaries by comparing structured field values across Response Records and Navigation Records; Navigator Plurality Protocol (NPP) dispatches the Navigator synthesis task to multiple independent platforms and cross-validates their syntheses; Explicit Delegation Boundaries (EDB) forces any reduction in checkpoint review depth at production scale into an explicit, auditable CBG decision with mandatory rationale, expiry, and escalation triggers. Statistical Process Control monitors the governance system itself for drift and triggers automatic escalation when configured ceilings are exceeded. The extension names the constitutional wall between AI Governance and Responsible AI: at production scale, volume pressure silently converts governance checkpoints into rubber stamps without anyone making an explicit decision to accept that trade-off, and the extension forces that decision into the open with an auditable record. Gaps surfaced through external architectural review by Krzysztof Olbiński, Founder of Homo Digital. Three-platform CAIPR review (Kimi, Grok, ChatGPT) with zero rejections and 3-of-3 approval convergence. Code implementation scoped as a separate development target. Convergence with Olbiński's Tesseract Protocol (homodigital.io) confirmed architecturally compatible; joint mapping of Tesseract-QGED signal fields to RECCLIN structured fields is an active collaboration target using the locked Tesseract-QGED Interface Specification v1.1 as the source schema.
 
 **Confidential Processing Extension (CPE) v1.1.** Addresses the privacy-during-computation gap. After GOPEL dispatches a prompt and before GOPEL collects the response, the data is inside an AI platform's inference stack with zero GOPEL visibility. CPE classifies every dispatch into exactly one of four profiles before any data moves, based on two deterministic inputs: the endpoint capability flag and the data sensitivity label. Profile 0 (Standard API) applies when the platform provides no confidential computing capability. Profile 1 (Attested TEE) applies when the platform supports hardware-attested trusted execution environments. Profile 2 (Tokenized Minimization) applies data minimization through pattern-matched tokenization before dispatch. Profile 3 (Cryptographic Inference) covers experimental FHE/SMPC workloads. Six-platform CAIPR review (Claude, Gemini, Grok, DeepSeek, Kimi, ChatGPT) with all platforms confirming architectural soundness.
 
@@ -398,13 +398,13 @@ The framework performs zero cognitive work. This is enforced by architecture (GO
 
 ### Development Targets (Specified, Not Yet Implemented)
 
-**Navigator plurality**: Now specified in CICE v1.1 Section 4 (Navigator Plurality Protocol). Dispatching the Navigator task to multiple platforms simultaneously and cross-validating their syntheses. Applies the same provider plurality architecture used for primary prompt dispatch. Specification complete; code implementation is a separate development target.
+**Navigator plurality**: Now specified in CICE v1.2 Section 4 (Navigator Plurality Protocol). Dispatching the Navigator task to multiple platforms simultaneously and cross-validating their syntheses. Applies the same provider plurality architecture used for primary prompt dispatch. Specification complete; code implementation is a separate development target.
 
-**Deterministic Metadata Comparison**: Specified in CICE v1.1 Section 3. Pre-checkpoint anomaly summaries comparing structured field values across Response Records and Navigation Records with GREEN/YELLOW/RED classification. Code implementation is a separate development target.
+**Deterministic Metadata Comparison**: Specified in CICE v1.2 Section 3. Pre-checkpoint anomaly summaries comparing structured field values across Response Records and Navigation Records with GREEN/YELLOW/RED classification. Code implementation is a separate development target.
 
-**Statistical Process Control**: Specified in CICE v1.1 Section 3.5. Cross-cutting monitoring of data quality drift, triage misclassification, NPP divergence, and timeout frequency with automatic escalation. Code implementation is a separate development target.
+**Statistical Process Control**: Specified in CICE v1.2 Section 3.5. Cross-cutting monitoring of data quality drift, triage misclassification, NPP divergence, and timeout frequency with automatic escalation. Code implementation is a separate development target.
 
-**Explicit Delegation Boundaries**: Specified in CICE v1.1 Section 5. Auditable AIG-to-RAI conversion through Delegation Records with mandatory rationale, expiry, and sampling protocol. Code implementation is a separate development target.
+**Explicit Delegation Boundaries**: Specified in CICE v1.2 Section 5. Auditable AIG-to-RAI conversion through Delegation Records with mandatory rationale, expiry, and sampling protocol. Code implementation is a separate development target.
 
 **Confidential Processing Extension**: Specified in CPE v1.1. Four-profile classification with RFC 9334 RATS attestation for hardware-attested environments. Code implementation is a separate development target.
 
@@ -427,7 +427,7 @@ The framework performs zero cognitive work. This is enforced by architecture (GO
 | 2 | Logging engine | Complete (v0.1.0) |
 | 3 | API dispatch, synthesis, security hardening | Complete (v0.2.0 through v0.4.1) |
 | 3.5 | Enterprise governance runtime | Complete (v0.5.0 through v0.6.1) |
-| 4 | CICE implementation (DMC, NPP, EDB, SPC) | Specified (CICE v1.1). Code development next. |
+| 4 | CICE implementation (DMC, NPP, EDB, SPC) | Specified (CICE v1.2). Code development next. |
 | 5 | CPE and PQ Amendment implementation | Specified (CPE v1.1, PQ v1.2). Follows Phase 4. |
 | 6 | Checkpoint gates (operating model enforcement) | Planned |
 | 7 | Compliance validation and formal verification | Planned |
@@ -442,7 +442,7 @@ Reviewing platforms: Claude (Anthropic), ChatGPT (OpenAI), Gemini (Google), Grok
 
 CAIPR specification review platforms (governance documents): Claude, ChatGPT, Gemini, Grok, Kimi, DeepSeek.
 
-External architectural review: Krzysztof Olbiński, Founder of Homo Digital (CICE v1.1 catalyst).
+External architectural review: Krzysztof Olbiński, Founder of Homo Digital (CICE v1.2 catalyst).
 
 ---
 
@@ -464,7 +464,7 @@ No Tier 2 evidence is presented as Tier 1. No Tier 3 aspiration is presented as 
 
 All published works are available at basilpuglisi.com, with supporting materials distributed across GitHub, SSRN, and Academia.edu.
 
-**GOPEL:** GOPEL Canonical Public v1.5; GOPEL Proof of Concept v3.1; Checkpoint Information Chain Extension (CICE) v1.1; Confidential Processing Extension (CPE) v1.1; Post-Quantum Cryptographic Agility Amendment v1.2
+**GOPEL:** GOPEL Canonical Public v1.5; GOPEL Proof of Concept v3.1; Checkpoint Information Chain Extension (CICE) v1.2; Confidential Processing Extension (CPE) v1.1; Post-Quantum Cryptographic Agility Amendment v1.2
 
 **HAIA-RECCLIN:** HAIA-RECCLIN Multi-AI Framework, Third Edition; HAIA-RECCLIN Agent Architecture CBG Case Study v1.1; Case Studies 001 through 007
 
