@@ -32,9 +32,9 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # repository root
 
-from haia_agent import (
+from haia_agent.gopel import (
     AuditLogger,
     ArbitrationDecision,
     MockAdapter,
@@ -54,10 +54,10 @@ from haia_agent import (
     TransportVerifier,
     AuditEncryption,
 )
-from haia_agent.models import AuditRecord, RecordType
-from haia_agent.security import HashWitness
-from haia_agent.navigator import NavigatorRouter
-from haia_agent.adapters import AdapterResponse
+from haia_agent.gopel.models import AuditRecord, RecordType
+from haia_agent.gopel.security import HashWitness
+from haia_agent.gopel.navigator import NavigatorRouter
+from haia_agent.gopel.adapters import AdapterResponse
 
 
 # ======================================================================
@@ -192,7 +192,7 @@ def test_a2_single_navigator_warning():
 def test_a3_no_governance_terms_in_synthesis():
     """A3: Secure synthesis prompt does not reveal RECCLIN/HAIA/GOPEL terms."""
     print("TEST A3: Architecture not exposed to Navigator...", end=" ")
-    from haia_agent.secure_pipeline import SECURE_SYNTHESIS_PROMPT
+    from haia_agent.gopel.secure_pipeline import SECURE_SYNTHESIS_PROMPT
     prompt_lower = SECURE_SYNTHESIS_PROMPT.lower()
     forbidden_terms = ["recclin", "haia", "gopel", "checkpoint", "arbitration", "governance"]
     found = [t for t in forbidden_terms if t in prompt_lower]
@@ -231,7 +231,7 @@ def test_a4_ordering_differs_by_seed():
     ]
     seed1 = SecureRotationSeed.generate_seed()
     seed2 = SecureRotationSeed.generate_seed()
-    from haia_agent.secure_pipeline import randomize_response_order
+    from haia_agent.gopel.secure_pipeline import randomize_response_order
     order1 = [r.platform_id for r in randomize_response_order(responses, seed1, "task1")]
     order2 = [r.platform_id for r in randomize_response_order(responses, seed2, "task1")]
     # Same seed reproduces
@@ -431,7 +431,7 @@ def test_h6_secure_logger_thread_safety():
             operator_id="thread_test",
         )
 
-        from haia_agent.models import RequestRecord
+        from haia_agent.gopel.models import RequestRecord
         errors = []
 
         def write_record(idx):

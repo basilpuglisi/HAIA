@@ -24,9 +24,9 @@ import tempfile
 import uuid
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # repository root
 
-from haia_agent import (
+from haia_agent.gopel import (
     AuditLogger,
     ArbitrationDecision,
     MockAdapter,
@@ -41,7 +41,7 @@ from haia_agent import (
     SecureRotationSeed,
     TransportVerifier,
 )
-from haia_agent.security import HashWitness, AuditEncryption
+from haia_agent.gopel.security import HashWitness, AuditEncryption
 
 
 # ======================================================================
@@ -412,7 +412,7 @@ def test_secure_logger_full_integration():
         )
 
         # Log several records
-        from haia_agent.models import RequestRecord, OperatingModel
+        from haia_agent.gopel.models import RequestRecord, OperatingModel
         for i in range(6):
             record = RequestRecord(
                 transaction_id=str(uuid.uuid4()),

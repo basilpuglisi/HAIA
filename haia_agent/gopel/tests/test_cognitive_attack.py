@@ -35,9 +35,9 @@ import tempfile
 import uuid
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # repository root
 
-from haia_agent import (
+from haia_agent.gopel import (
     AuditLogger,
     ArbitrationDecision,
     BreachCategory,
@@ -61,8 +61,8 @@ from haia_agent import (
     SecureArbitrationInput,
     sanitize_for_synthesis,
 )
-from haia_agent.navigator import NavigatorRouter
-from haia_agent.adapters import AdapterResponse, PlatformAdapter
+from haia_agent.gopel.navigator import NavigatorRouter
+from haia_agent.gopel.adapters import AdapterResponse, PlatformAdapter
 
 
 # ======================================================================

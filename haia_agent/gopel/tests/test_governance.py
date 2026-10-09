@@ -36,9 +36,9 @@ Author: Basil C. Puglisi, MPA
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # repository root
 
-from haia_agent.governance import (
+from haia_agent.gopel.governance import (
     AuthorizationResult,
     Authorizer,
     EscalationEngine,
@@ -74,8 +74,8 @@ from haia_agent.governance import (
     RULE_INJECTION_FLOOD_CRITICAL,
     RULE_PLATFORM_FAILURE_ELEVATED,
 )
-from haia_agent.breach import BreachSeverity
-from haia_agent.models import OperatingModel, RECCLINRole
+from haia_agent.gopel.breach import BreachSeverity
+from haia_agent.gopel.models import OperatingModel, RECCLINRole
 
 
 # ======================================================================
@@ -1074,7 +1074,7 @@ def _t1b_base_evidence(submitted_by: str) -> list:
 def test_t1b_unsigned_second_approver_blocked():
     """T1-B: Second approver evidence without signature blocked when registry present."""
     print("TEST T1-B: Unsigned second approver blocked...", end=" ")
-    from haia_agent.security import OperatorIdentity, OperatorRegistry
+    from haia_agent.gopel.security import OperatorIdentity, OperatorRegistry
 
     registry = OperatorRegistry()
     registry.register_operator(OperatorIdentity("admin_sarah"))
@@ -1103,7 +1103,7 @@ def test_t1b_unsigned_second_approver_blocked():
 def test_t1b_signed_second_approver_passes():
     """T1-B: Properly signed second approver evidence accepted."""
     print("TEST T1-B: Signed second approver passes...", end=" ")
-    from haia_agent.security import OperatorIdentity, OperatorRegistry
+    from haia_agent.gopel.security import OperatorIdentity, OperatorRegistry
 
     registry = OperatorRegistry()
     registry.register_operator(OperatorIdentity("admin_sarah"))
@@ -1132,7 +1132,7 @@ def test_t1b_signed_second_approver_passes():
 def test_t1b_wrong_key_signature_rejected():
     """T1-B: Evidence signed with wrong key is rejected."""
     print("TEST T1-B: Wrong key signature rejected...", end=" ")
-    from haia_agent.security import OperatorIdentity, OperatorRegistry
+    from haia_agent.gopel.security import OperatorIdentity, OperatorRegistry
 
     registry = OperatorRegistry()
     registry.register_operator(OperatorIdentity("admin_sarah"))

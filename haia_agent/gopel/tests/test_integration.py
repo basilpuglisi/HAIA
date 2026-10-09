@@ -22,11 +22,11 @@ import sys
 from pathlib import Path
 
 # Add parent to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # repository root
 
-from haia_agent.adapters.mock_adapter import MockAdapter
-from haia_agent.breach import BreachDetector, PipelineCircuitBreaker
-from haia_agent.governance import (
+from haia_agent.gopel.adapters.mock_adapter import MockAdapter
+from haia_agent.gopel.breach import BreachDetector, PipelineCircuitBreaker
+from haia_agent.gopel.governance import (
     ARBITRATION_GATE,
     EscalationEngine,
     EvidenceSubmission,
@@ -48,15 +48,15 @@ from haia_agent.governance import (
     RULE_INJECTION_FLOOD_CRITICAL,
     RULE_PLATFORM_FAILURE_ELEVATED,
 )
-from haia_agent.logger import AuditLogger
-from haia_agent.models import OperatingModel, RECCLINRole, ArbitrationDecision
-from haia_agent.navigator import NavigatorRouter
-from haia_agent.secure_pipeline import (
+from haia_agent.gopel.logger import AuditLogger
+from haia_agent.gopel.models import OperatingModel, RECCLINRole, ArbitrationDecision
+from haia_agent.gopel.navigator import NavigatorRouter
+from haia_agent.gopel.secure_pipeline import (
     SecureGOPELPipeline,
     SecureArbitrationInput,
 )
-from haia_agent.security import OperatorIdentity, OperatorRegistry
-from haia_agent.selector import PlatformSelector
+from haia_agent.gopel.security import OperatorIdentity, OperatorRegistry
+from haia_agent.gopel.selector import PlatformSelector
 
 
 # ======================================================================
@@ -669,7 +669,7 @@ def test_int17_breach_state_blocks_next_transaction():
 
     # Simulate that Transaction 1 produced a CRITICAL breach
     # (In production this happens via breach_detector.analyze_transaction)
-    from haia_agent.breach import BreachSeverity
+    from haia_agent.gopel.breach import BreachSeverity
     pipeline._last_breach_severity = BreachSeverity.CRITICAL
     pipeline._last_injection_count = 5
 
@@ -716,7 +716,7 @@ def test_int18_logger_health_catches_corruption():
 def test_int19_breach_acknowledgment_resolves_deadlock():
     """INT19: Breach acknowledgment clears state so execution resumes (CLAUDE-R9)."""
     print("TEST INT19: Breach acknowledgment resolves deadlock...", end=" ")
-    from haia_agent.breach import BreachSeverity
+    from haia_agent.gopel.breach import BreachSeverity
     runtime = make_governance_runtime()
     pipeline = make_pipeline(governance_runtime=runtime, tmpdir="/tmp/int19")
 

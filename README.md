@@ -11,6 +11,8 @@ Seven deterministic operations. Zero cognitive work. The agent performs no evalu
 **Version:** 0.6.0
 **Status:** Working concept showing promise. Theories in development. Observable operational behaviors.
 
+**Repository layout (October 2026):** [haia_agent/](haia_agent/) is the HAIA Agents master folder. GOPEL, its adapters, and its tests live in [haia_agent/gopel/](haia_agent/gopel/), and the Alpha code for Agent Model 1 and Agent Model 2 lives in [haia_agent/Models1to3/](haia_agent/Models1to3/). GOPEL imports as `from haia_agent.gopel import AuditLogger`.
+
 ## What This Is
 
 The HAIA Agent Framework is governance infrastructure for multi-AI workflows. It is the software implementation of the GOPEL architecture specified in the AI Provider Plurality congressional package and the HAIA-RECCLIN Agent Architecture Specification.
@@ -82,7 +84,7 @@ pip install openai anthropic google-generativeai
 ### Minimal: Audit Logging Only
 
 ```python
-from haia_agent import AuditLogger, RECCLINRole, OperatingModel, ArbitrationDecision
+from haia_agent.gopel import AuditLogger, RECCLINRole, OperatingModel, ArbitrationDecision
 
 logger = AuditLogger(
     audit_file_path="audit_trail.json",
@@ -107,13 +109,13 @@ metrics = logger.generate_governance_metrics()
 
 ```python
 from pathlib import Path
-from haia_agent import (
+from haia_agent.gopel import (
     AuditLogger, PlatformSelector, MockAdapter, RECCLINRole,
     OperatingModel, OperatorIdentity, OperatorRegistry,
     SecureGOPELPipeline, PipelineIdentity, Sentinel,
     BreachNotifier, PipelineCircuitBreaker,
 )
-from haia_agent.navigator import NavigatorRouter
+from haia_agent.gopel.navigator import NavigatorRouter
 
 # Operator authentication
 registry = OperatorRegistry()
@@ -177,15 +179,15 @@ elif result.signed_alert:
 
 ```bash
 # Individual suites
-python tests/test_logging_engine.py     # 10 tests: audit schema and hash chain
-python tests/test_pipeline.py           # 10 tests: 14-step pipeline execution
-python tests/test_security.py           # 20 tests: V1-V10 first-pass hardening
-python tests/test_security_pass2.py     # 23 tests: A1-A5, H1-H6, C1-C3 second-pass
-python tests/test_cognitive_attack.py   # 18 tests: CA1-CA8 cognitive agent attacks + breach system
-python tests/test_sentinel.py           # 18 tests: IMP1-IMP7 impersonation + sentinel system
+python haia_agent/gopel/tests/test_logging_engine.py     # 10 tests: audit schema and hash chain
+python haia_agent/gopel/tests/test_pipeline.py           # 10 tests: 14-step pipeline execution
+python haia_agent/gopel/tests/test_security.py           # 20 tests: V1-V10 first-pass hardening
+python haia_agent/gopel/tests/test_security_pass2.py     # 23 tests: A1-A5, H1-H6, C1-C3 second-pass
+python haia_agent/gopel/tests/test_cognitive_attack.py   # 18 tests: CA1-CA8 cognitive agent attacks + breach system
+python haia_agent/gopel/tests/test_sentinel.py           # 18 tests: IMP1-IMP7 impersonation + sentinel system
 
 # All suites
-for t in tests/test_*.py; do python "$t"; done
+for t in haia_agent/gopel/tests/test_*.py; do python "$t"; done
 ```
 
 171 tests. Zero failures. All framework source files pass non-cognitive constraint static analysis.

@@ -17,7 +17,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 # Add parent to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # repository root
 
 
 # =====================================================================
@@ -44,7 +44,7 @@ class TestCryptographyFallbackWarning:
 
         with patch("builtins.__import__", side_effect=mock_import):
             # Force re-instantiation with mocked import
-            from haia_agent.security import AuditEncryption
+            from haia_agent.gopel.security import AuditEncryption
             # We need to actually trigger the __init__ with the mock active
             # The simplest way is to construct a new instance
             enc = AuditEncryption.__new__(AuditEncryption)
@@ -57,7 +57,7 @@ class TestCryptographyFallbackWarning:
 
     def test_production_grade_with_cryptography(self):
         """When cryptography IS available, is_production_grade must be True."""
-        from haia_agent.security import AuditEncryption
+        from haia_agent.gopel.security import AuditEncryption
         enc = AuditEncryption()
         # If cryptography is installed in test environment, should be True
         try:
@@ -69,7 +69,7 @@ class TestCryptographyFallbackWarning:
 
     def test_fallback_encryption_roundtrip(self):
         """Fallback encryption must still work for basic roundtrip."""
-        from haia_agent.security import AuditEncryption
+        from haia_agent.gopel.security import AuditEncryption
         enc = AuditEncryption()
         plaintext = "sensitive audit record content"
         ciphertext = enc.encrypt(plaintext)
@@ -86,7 +86,7 @@ class TestWitnessForceOverride:
 
     def test_force_witnesses_at_non_interval(self):
         """force=True must trigger witness regardless of sequence number."""
-        from haia_agent.security import HashWitness
+        from haia_agent.gopel.security import HashWitness
         with tempfile.TemporaryDirectory() as td:
             witness_path = Path(td) / "witness.json"
 
@@ -99,7 +99,7 @@ class TestWitnessForceOverride:
 
     def test_force_false_preserves_interval_logic(self):
         """force=False (default) must preserve existing interval behavior."""
-        from haia_agent.security import HashWitness
+        from haia_agent.gopel.security import HashWitness
         with tempfile.TemporaryDirectory() as td:
             witness_path = Path(td) / "witness.json"
 
@@ -118,7 +118,7 @@ class TestWitnessForceOverride:
 
     def test_configurable_interval_at_construction(self):
         """Witness interval must be settable at construction time."""
-        from haia_agent.security import HashWitness
+        from haia_agent.gopel.security import HashWitness
         with tempfile.TemporaryDirectory() as td:
             witness_path = Path(td) / "witness.json"
 
@@ -144,10 +144,10 @@ class TestStaticAnalyzerBoundary:
 
     def test_rejects_file_outside_framework(self):
         """Scanning a file outside framework_root must return SCOPE_VIOLATION."""
-        from haia_agent.static_analyzer import NonCognitiveAnalyzer, CognitiveViolation
+        from haia_agent.gopel.static_analyzer import NonCognitiveAnalyzer, CognitiveViolation
 
         # Create analyzer rooted in the framework directory
-        framework_root = Path(__file__).parent.parent / "haia_agent"
+        framework_root = Path(__file__).resolve().parent
         analyzer = NonCognitiveAnalyzer(framework_root)
 
         # Create a temp file OUTSIDE the framework root
@@ -169,9 +169,9 @@ class TestStaticAnalyzerBoundary:
 
     def test_accepts_file_inside_framework(self):
         """Scanning a file inside framework_root must proceed normally."""
-        from haia_agent.static_analyzer import NonCognitiveAnalyzer
+        from haia_agent.gopel.static_analyzer import NonCognitiveAnalyzer
 
-        framework_root = Path(__file__).parent.parent / "haia_agent"
+        framework_root = Path(__file__).resolve().parent
         analyzer = NonCognitiveAnalyzer(framework_root)
 
         # Scan an actual framework file
@@ -186,9 +186,9 @@ class TestStaticAnalyzerBoundary:
 
     def test_full_scan_finds_no_scope_violations(self):
         """A full framework scan must never produce SCOPE_VIOLATION."""
-        from haia_agent.static_analyzer import NonCognitiveAnalyzer
+        from haia_agent.gopel.static_analyzer import NonCognitiveAnalyzer
 
-        framework_root = Path(__file__).parent.parent / "haia_agent"
+        framework_root = Path(__file__).resolve().parent
         analyzer = NonCognitiveAnalyzer(framework_root)
         result = analyzer.scan()
 
@@ -199,9 +199,9 @@ class TestStaticAnalyzerBoundary:
 
     def test_full_scan_remains_compliant(self):
         """Full scan must still report non-cognitive compliance."""
-        from haia_agent.static_analyzer import NonCognitiveAnalyzer
+        from haia_agent.gopel.static_analyzer import NonCognitiveAnalyzer
 
-        framework_root = Path(__file__).parent.parent / "haia_agent"
+        framework_root = Path(__file__).resolve().parent
         analyzer = NonCognitiveAnalyzer(framework_root)
         result = analyzer.scan()
 
@@ -218,5 +218,5 @@ class TestVersionBump:
     """Verify version is updated."""
 
     def test_version_is_0_6_1(self):
-        import haia_agent
-        assert haia_agent.__version__ == "0.6.1"
+        from haia_agent import gopel
+        assert gopel.__version__ == "0.6.1"
