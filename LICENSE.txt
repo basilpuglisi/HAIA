@@ -1,6 +1,10 @@
-Creative Commons Attribution-NonCommercial 4.0 International
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
 
-CC BY-NC 4.0
+CC BY-NC-SA 4.0
+
+Free for personal, educational, and noncommercial research use with
+attribution. Commercial exploitation, paid productization, and
+enterprise commercialization require separate permission and licensing.
 
 Copyright (c) 2025-2026 Basil C. Puglisi
 BasilPuglisi.com
@@ -31,6 +35,10 @@ Under the following terms:
   endorses you or your use.
 
   NonCommercial - You may not use the material for commercial purposes.
+
+  ShareAlike - If you remix, transform, or build upon the material,
+  you must distribute your contributions under the same license as
+  the original.
 
   No additional restrictions - You may not apply legal terms or
   technological measures that legally restrict others from doing
@@ -87,6 +95,6 @@ Examples of use that require a commercial license:
 =========================================================================
 
 Full license text available at:
-https://creativecommons.org/licenses/by-nc/4.0/legalcode
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 
 =========================================================================

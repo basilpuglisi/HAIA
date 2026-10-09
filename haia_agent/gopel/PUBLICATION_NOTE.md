@@ -42,9 +42,9 @@ This implementation supports and is referenced by:
 
 ## License
 
-Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
 
-Free for non-commercial use with attribution. Commercial and enterprise use requires permission from the author. See LICENSE file for details.
+Free for personal, educational, and noncommercial research use with attribution. Commercial exploitation, paid productization, and enterprise commercialization require separate permission and licensing. See the LICENSE file for details.
 
 ## Contact
 

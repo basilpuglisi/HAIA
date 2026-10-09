@@ -11,7 +11,7 @@ Seven deterministic operations. Zero cognitive work. The agent performs no evalu
 **Code Version:** 0.6.1
 **CBG Authority:** Checkpoint-Based Governance v5.0
 **Framework:** HAIA-RECCLIN 2026 Edition
-**Repository:** github.com/basilpuglisi/HAIA · CC BY-NC 4.0
+**Repository:** github.com/basilpuglisi/HAIA · CC BY-NC-SA 4.0
 **Book:** Governing AI: When Capability Exceeds Control · ISBN 9798349677687
 **Attribution:** #AIassisted under HAIA-RECCLIN & Checkpoint-Based Governance
 
@@ -262,7 +262,7 @@ elif result.signed_alert:
 python haia_agent/gopel/tests/test_logging_engine.py     # 10 tests: audit schema and hash chain
 python haia_agent/gopel/tests/test_pipeline.py           # 10 tests: 14-step pipeline execution
 python haia_agent/gopel/tests/test_security.py           # 20 tests: V1-V10 first-pass hardening
-python haia_agent/gopel/tests/test_security_pass2.py     # 23 tests: A1-A5, H1-H6, C1-C3 second-pass
+python haia_agent/gopel/tests/test_security_pass2.py     # 29 tests: A1-A5, H1-H6, C1-C3 second-pass
 python haia_agent/gopel/tests/test_cognitive_attack.py   # 18 tests: CA1-CA8 cognitive agent attacks + breach system
 python haia_agent/gopel/tests/test_sentinel.py           # 18 tests: IMP1-IMP7 impersonation + sentinel system
 

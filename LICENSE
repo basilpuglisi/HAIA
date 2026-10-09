@@ -2,10 +2,15 @@ HAIA Agent Framework
 Copyright (c) 2025-2026 Basil C. Puglisi, MPA
 
 This work is licensed under the Creative Commons
-Attribution-NonCommercial 4.0 International License.
+Attribution-NonCommercial-ShareAlike 4.0 International License
+(CC BY-NC-SA 4.0).
+
+Free for personal, educational, and noncommercial research use with
+attribution. Commercial exploitation, paid productization, and
+enterprise commercialization require separate permission and licensing.
 
 To view a copy of this license, visit:
-https://creativecommons.org/licenses/by-nc/4.0/
+https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 You are free to:
 
@@ -24,6 +29,10 @@ Under the following terms:
   deployment, integration into commercial products or services,
   use within for-profit consulting engagements, or any use generating
   direct or indirect revenue.
+
+  ShareAlike - If you remix, transform, or build upon the material,
+  you must distribute your contributions under the same license as
+  the original.
 
 For commercial or enterprise licensing inquiries, contact:
 Basil C. Puglisi - basilpuglisi.com
