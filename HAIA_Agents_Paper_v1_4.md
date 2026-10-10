@@ -10,7 +10,7 @@ First published February 3, 2026, as the HAIA-RECCLIN Agent Architecture Specifi
 
 ## Abstract
 
-The year 2026 opened on a definition problem. The field used one vocabulary for automation and for human-centered control, so a system that only watched itself could be sold as governed, and a person who only watched a screen could be counted as a governor. On January 1, 2026, the author separated Ethical AI, Responsible AI, and AI Governance as distinct layers. On February 3, 2026, the original paper turned that separation into three agent models that differ by where the human stands: an agent that runs the whole pipeline, an agent that stops for a human at every functional role, and no agent at all. On February 23, 2026, a non-cognitive enforcement layer, which the author calls GOPEL, showed that the mechanical layer could be written as code that performs no cognitive work, and on March 14, 2026, the definition of AI Governance named who answers. This rebuild carries that path forward to working software. It introduces the Alpha release of code for Agent Model 1, which is Responsible AI written as code that checks the machine with other machines and passes nothing without a gate, and for Agent Model 2, the hybrid in which the machine runs through to AI Governance at a signed human checkpoint after every role. It then revisits Agent Model 3, Manual Human AI Governance, which remains the default in use and which produced both releases. Both releases are published with the checks they pass in the author's HAIA repository on GitHub. Neither is deployed, and in the build record neither has yet called a live AI provider.
+The year 2026 opened on a definition problem. The field used one vocabulary for automation and for human-centered control, so a system that only watched itself could be sold as governed, and a person who only watched a screen could be counted as a governor. On January 1, 2026, the author separated Ethical AI, Responsible AI, and AI Governance as distinct layers. On February 3, 2026, the original paper turned that separation into three agent models that differ by where the human stands: an agent that runs the whole pipeline, an agent that stops for a human at every functional role, and no agent at all. On February 23, 2026, a non-cognitive enforcement layer, which the author calls GOPEL, showed that the mechanical layer could be written as code that performs no cognitive work, and on March 14, 2026, the definition of AI Governance named who answers. This rebuild carries that path forward to working software for the agent layer, now named HAIA Agents. It introduces the Alpha release of code for Agent Model 1, which is Responsible AI written as code that checks the machine with other machines and passes nothing without a gate, and for Agent Model 2, the hybrid in which the machine runs through to AI Governance at a signed human checkpoint after every role. It then revisits Agent Model 3, Manual Human AI Governance, which remains the default in use and which produced both releases. Both releases are published with the checks they pass in the author's HAIA repository on GitHub. Neither is deployed, and in the build record neither has yet called a live AI provider.
 
 ---
 
@@ -252,7 +252,6 @@ Puglisi, B. C. (2025a, September 23). *Checkpoint-Based Governance: An implement
 - Lumenalta. (2025, March 3). *AI governance checklist (Updated 2025)*. https://lumenalta.com/insights/ai-governance-checklist-updated-2025
 - McKinsey & Company. (2025). *Superagency in the workplace: Empowering people to unlock AI's full potential at work*. https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/superagency-in-the-workplace-empowering-people-to-unlock-ais-full-potential-at-work
 - National Institute of Standards and Technology. (2023). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. U.S. Department of Commerce. https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf
-- Nexastack. (2025). *Agent governance at scale*. https://www.nexastack.ai/blog/agent-governance-at-scale
 - OECD. (2025). *Steering AI's future: Strategies for anticipatory governance*. https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/02/steering-ai-s-future_70e4a856/5480ff0a-en.pdf
 - Parasuraman, R., & Manzey, D. H. (2010). Complacency and bias in human use of automation: An attentional integration. *Human Factors, 52*(3), 381-410. https://doi.org/10.1177/0018720810376055
 - Precisely. (2025, August 11). *AI governance frameworks: Cutting through the chaos*. https://www.precisely.com/datagovernance/opening-the-black-box-building-transparent-ai-governance-frameworks
@@ -260,7 +259,7 @@ Puglisi, B. C. (2025a, September 23). *Checkpoint-Based Governance: An implement
 - Stanford Institute for Human-Centered Artificial Intelligence. (2024). *Artificial Intelligence Index Report 2024*. Stanford University. https://aiindex.stanford.edu/report/
 - Strobes Security. (2025, July 1). *AI governance framework for security leaders*. https://strobes.co/blog/ai-governance-framework-for-security-leaders
 - Superblocks. (2025, July 31). *What is AI model governance?* https://www.superblocks.com/blog/ai-model-governance
-- Visa. (2025). *Visa introduces Trusted Agent Protocol: An ecosystem-led framework for AI commerce*. https://investor.visa.com/news/news-details/2025/Visa-Introduces-Trusted-Agent-Protocol
+- Visa. (2025). *Visa introduces Trusted Agent Protocol: An ecosystem-led framework for AI commerce*. https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.21716.html
 
 Puglisi, B. C. (2025b, December 6). *HAIA-CORE: Evaluate your content before the algorithm does*. Medium. https://medium.com/@basilpuglisi/haia-core-evaluate-your-content-before-the-algorithm-does-812e0ebbba04
 
@@ -276,13 +275,12 @@ Puglisi, B. C. (2026a, March 14). *AI Governance has no formal definition. Here 
 - Companies committed to responsible AI: From principles towards implementation and regulation? (2021). *Philosophy & Technology*. PMC 8492454.
 - Council of Europe. (2026, January 28). *Armenia signs the Framework Convention on Artificial Intelligence*. https://www.coe.int/en/web/artificial-intelligence/-/armenia-signs-the-council-of-europe-s-framework-convention-on-artificial-intelligence-1
 - European Union. (2024). *Artificial Intelligence Act, Article 14: Human oversight*. https://artificialintelligenceact.eu/article/14/
-- Floridi, L., & Cowan, S. (2025). Operationalizing accountability in AI governance: From principles to procedures. *AI and Ethics, 5*(2). https://doi.org/10.1007/s43681-025-00438-2
 - Goffi, E. R. (2022). Respecting cultural diversity in ethics applied to AI: A new approach for multicultural governance. *Revista Misión Jurídica*.
-- International Organization for Standardization. (2021). *ISO 37000:2021 Governance of organizations*. https://www.iso.org/standard/65034.html
+- International Organization for Standardization. (2021). *ISO 37000:2021 Governance of organizations*. https://www.iso.org/standard/65036.html
 - International Organization for Standardization. (2022). *ISO/IEC 38507:2022 Governance implications of the use of AI by organizations*. https://www.iso.org/standard/56641.html
 - International Organization for Standardization. (2023). *ISO/IEC 42001:2023 AI management systems*. https://www.iso.org/standard/42001
 - Jobin, A., Ienca, M., & Vayena, E. (2019). The global landscape of AI ethics guidelines. *Nature Machine Intelligence, 1*, 389-399. https://doi.org/10.1038/s42256-019-0088-2
-- Maas, M. M. (2025). *Architectures of global AI governance: From technological change to human choice*. Oxford Academic. https://doi.org/10.1093/9780191988455.003.0001
+- Maas, M. M. (2025). *Architectures of global AI governance: From technological change to human choice*. Oxford University Press. https://doi.org/10.1093/9780191988455.001.0001
 - National Institute of Standards and Technology. (2023). *AI Risk Management Framework (AI RMF 1.0)*. https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf
 - National Institute of Standards and Technology. (2024). *Generative AI Profile (NIST AI 600-1)*. https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf
 - OECD. (2019). *Recommendation of the Council on Artificial Intelligence*. https://oecd.ai/en/ai-principles
@@ -308,7 +306,6 @@ Puglisi, B. C. (2026c, April 23). *CARCS: Compliance accountability record & cas
 
 Puglisi, B. C. (2026f, February 23). *GOPEL: The code behind the policy*. basilpuglisi.com. https://basilpuglisi.com/gopel-the-code-behind-the-policy/
 
-- Banovic, N., Kraut, R. E., Olson, J. S., & Steinfeld, A. (2023). The effects of explanations and algorithmic accuracy on visual recommender systems of artistic images. *Behaviour & Information Technology, 43*(9), 1-18. https://doi.org/10.1080/0144929X.2023.2184098
 - European Data Protection Supervisor. (2025, September 22). *TechDispatch #2/2025: Human oversight of automated decision-making*. EDPS Office.
 - European Union. (2024). *Regulation (EU) 2024/1689 (Artificial Intelligence Act)*. Official Journal of the European Union.
 - Goddard, K., Roudsari, A., & Wyatt, J. C. (2011). Automation bias: A systematic review of frequency, effect mediators, and mitigators. *Journal of the American Medical Informatics Association, 19*(1), 121-127. https://doi.org/10.1136/amiajnl-2011-000089
@@ -319,7 +316,6 @@ Puglisi, B. C. (2026g, February 5). *The great AI language collapse: Why marketi
 - Anthropic. (2023). *Claude's constitution*. https://www.anthropic.com/news/claudes-constitution
 - Bai, Y., et al. (2022). *Constitutional AI: Harmlessness from AI feedback* (arXiv:2212.08073). https://arxiv.org/abs/2212.08073
 - CEN-CENELEC. (2025). *prEN 18286: Artificial intelligence, quality management system for AI*.
-- Digital Constitutionalist. (2024). *On constitutional AI*. https://digi-con.org/on-constitutional-ai/
 - EU AI Act, Article 14 (Human oversight by natural persons for high-risk systems). https://artificialintelligenceact.eu/article/14/
 - European Parliament and Council. (2024). *Regulation (EU) 2024/1689 (AI Act)*, Article 14: Human oversight; Article 17: Quality management system.
 - Fink, M. (2025). *Human oversight under Article 14 of the EU AI Act*. SSRN.
@@ -331,10 +327,11 @@ Puglisi, B. C. (2026g, February 5). *The great AI language collapse: Why marketi
 - ISO/IEC 38507:2022 (Governance implications of AI use). https://www.itsmf.ch/blogs/post/the-eu-ai-act-and-the-main-related-iso-standards-42001-38507-and-38500
 - ISO/IEC 42001:2023 (AI management systems). https://www.iso.org/standard/42001
 - Jobin, A., Ienca, M., & Vayena, E. (2019). Global landscape of 84 AI ethics guidelines. https://doi.org/10.1038/s42256-019-0088-2
-- Maas, M. (2025). Global AI governance architecture. Oxford Academic. https://academic.oup.com/book/61416/chapter/533869022
+- Maas, M. M. (2025). *Architectures of global AI governance: From technological change to human choice*. Oxford University Press. https://doi.org/10.1093/9780191988455.001.0001
 - NIST AI 600-1 Generative AI Profile. https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf
 - NIST AI RMF 1.0. https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf
 - OECD AI Principles. https://oecd.ai/en/ai-principles
+- Orozco y Villa, L. H., & Menendez, N. (2025, March 13). *On 'constitutional' AI*. The Digital Constitutionalist. https://digi-con.org/on-constitutional-ai/
 - PMC. (2021). Companies committed to responsible AI. https://pmc.ncbi.nlm.nih.gov/articles/PMC8492454/
 - Stix, C. (2022). Terminological history of trustworthy, ethical, and responsible AI. https://link.springer.com/article/10.1007/s44163-022-00041-5
 - UNESCO Recommendation on the Ethics of AI. https://www.unesco.org/en/legal-affairs/recommendation-ethics-artificial-intelligence
@@ -355,8 +352,6 @@ Puglisi, B. C. (2026j, February 6). *HAIA-RECCLIN: Agent governance architecture
 
 - Agranat Commission. (1974). *Israeli state inquiry into the Yom Kippur War*. State of Israel Government Report.
 - Bandara, E., et al. (2025). *Towards responsible and explainable AI agents with consensus-driven reasoning* (arXiv:2512.21699).
-- Banovic, N., Kraut, R. E., Olson, J. S., & Steinfeld, A. (2023). The effects of explanations and algorithmic accuracy on visual recommender systems of artistic images. *Behaviour & Information Technology, 43*(9), 1-18. https://doi.org/10.1080/0144929X.2023.2184098
-- Barrett, H. C., et al. (2023). *Psychology's WEIRD problems*. Cambridge Elements. https://doi.org/10.1017/9781108974288
 - Cao, J., Deng, Z., Zhao, M., Guo, L., & Zhang, S. (2024). *Diagnosing the Western cultural bias of large vision-language models in generative image understanding* (arXiv:2406.11665).
 - Clayton Antitrust Act, 15 U.S.C. §§ 12-27 (1914).
 - Di Vita, S., et al. (2025). *EAM-SQL: Cryptographic safety envelopes for table-centric LLM pipelines*. OpenReview.
@@ -370,27 +365,28 @@ Puglisi, B. C. (2026j, February 6). *HAIA-RECCLIN: Agent governance architecture
 - Henrich, J., Atari, M., Xue, M. J., Park, P. S., & Blasi, D. E. (2024). *Which humans? Measuring and understanding the responses of large language models to cultural diversity* [Working paper]. Harvard Department of Human Evolutionary Biology.
 - Henrich, J., Heine, S. J., & Norenzayan, A. (2010). The weirdest people in the world? *Behavioral and Brain Sciences, 33*(2-3), 61-83. https://doi.org/10.1017/S0140525X0999152X
 - Hoover, A. (2025, June 17). There's a "10% to 20% chance" that AI will displace humans completely, says "godfather" of the technology. CNBC.
+- Horowitz, M. C., & Kahn, L. (2024). Bending the automation bias curve: A study of human and AI-based decision making in national security contexts. *International Studies Quarterly, 68*(2), sqae020. https://doi.org/10.1093/isq/sqae020
 - Janis, I. L. (1972). *Victims of groupthink: A psychological study of foreign-policy decisions and fiascos*. Houghton Mifflin.
-- Kreps, S., Kriner, D. L., & Schneider, J. (2024). Automation bias in national security contexts: Experiential and attitudinal drivers. *International Studies Quarterly, 68*(2), sqae020. https://doi.org/10.1093/isq/sqae020
 - Mallaband, A. (2025, December 29). *Deterministic guardrails for nondeterministic agents*. LinkedIn.
 - Mökander, J., & Floridi, L. (2025). Human oversight under Article 14 of the EU AI Act. In *Regulation of artificial intelligence: International standards and governance mechanisms* (pp. 127-154). Edward Elgar Publishing.
-- Mosier, K. L., & Skitka, L. J. (1996). Does automation bias decision-making? *International Journal of Industrial Ergonomics, 18*(5), 311-325. https://doi.org/10.1016/0169-8141(95)00070-4
 - Narechania, T. S., & Sitaraman, G. (2024). An antimonopoly approach to governing artificial intelligence. *Yale Law & Policy Review, 43*(1), 1-74.
 - Navarrete, J., Vaca-Barahona, B., Peña, S., & Hernández-Suárez, A. (2024). Human oversight of automated decision-making systems: A multi-method study on automation bias with recidivism risk assessment algorithms. *PLOS ONE, 19*(1), e0296384.
 - Nolan, J., & Nolan, L. (Creators). (2011-2016). *Person of interest* [TV series]. CBS.
 - Parasuraman, R., & Manzey, D. H. (2010). Complacency and bias in human use of automation: An attentional integration. *Human Factors, 52*(3), 381-410. https://doi.org/10.1177/0018720810376055
 - Pierucci, F., Galisai, M., Bracale, M. S., Prandi, M., Bisconti, P., Giarrusso, F., Sorokoletova, O., Suriani, V., & Nardi, D. (2026). *Institutional AI: A governance framework for distributional AGI safety* (arXiv:2601.10599).
 - prEN 18286:2025. *Quality management systems for providers of AI systems*. European Committee for Standardization (CEN).
-- Schrepel, T. (2025). Decoding the AI Act: Implications for competition law and computational antitrust. *Journal of Competition Law & Economics, 21*(3), 374-412. https://doi.org/10.1093/jcle/qhae024
+- Sanches de Oliveira, G., & Baggs, E. (2023). *Psychology's WEIRD problems*. Cambridge University Press. https://doi.org/10.1017/9781009303538
+- Schrepel, T. (2025). Decoding the AI Act: Implications for competition law and market dynamics. *Journal of Competition Law & Economics, 21*(3), 374-389. https://doi.org/10.1093/joclec/nhaf007
 - Sherman Antitrust Act, 15 U.S.C. §§ 1-7 (1890).
 - Shur-Ofry, M. (2023). Multiplicity as an AI governance principle. *International Journal for Law and Information Policy, 12*(3), 374-410.
+- Skitka, L. J., Mosier, K. L., & Burdick, M. (1999). Does automation bias decision-making? *International Journal of Human-Computer Studies, 51*(5), 991-1006. https://doi.org/10.1006/ijhc.1999.0252
 - Sonate. (n.d.). *SONATE trust protocol*.
 - Tao, Y., Viberg, O., Baker, R. S., & Kizilcec, R. F. (2024). Cultural bias and cultural alignment of large language models. *PNAS Nexus, 3*(9), pgae346. https://doi.org/10.1093/pnasnexus/pgae346
 - Vallance, C. (2024, December 27). "Godfather of AI" shortens odds of the technology wiping out humanity over next 30 years. *The Guardian*.
 - VeritasChain Standards Organization. (2026, January 18). *Why the EU AI Act needs cryptographic audit trails, and how VCP v1.1 delivers them*. VeritasChain Blog.
 - Vijayaraghavan, G., et al. (2026). *If you want coherence, orchestrate a team of rivals: Multi-agent models of organizational intelligence* (arXiv:2601.14351).
 - Zhao, R., Shoaib, M., Hoang, V. T., & Hassan, W. U. (2025). Rethinking tamper-evident logging: A high-performance, co-designed auditing system. In *Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security (CCS '25)*. ACM.
-- Zheng, K. (2025). Antitrust in artificial intelligence infrastructure. *Neurocomputing*. https://doi.org/10.1016/j.neucom.2025.127235
+- Zheng, K. (2025). Antitrust in artificial intelligence infrastructure: Between regulation and innovation in the EU, the US, and China. *Computer Law & Security Review, 59*, 106211. https://doi.org/10.1016/j.clsr.2025.106211
 - Zhou, K., Constantinides, M., & Quercia, D. (2025). *Should LLMs be WEIRD? Exploring WEIRDness and human rights in large language models* (arXiv:2508.19269).
 
 Puglisi, B. C. (2026k, September 16). *HAIA-SMART Creative: The Social Media AI Rating Tool, and why every AI visual looks the same*. basilpuglisi.com. https://basilpuglisi.com/haia-smart-creative/
@@ -410,7 +406,7 @@ Puglisi, B. C. (2026n, January 1). *What we failed to define is how we fail*. ba
 - Center for AI Safety. (2023, May 30). *Statement on AI risk*. https://safe.ai/work/press-release-ai-risk
 - CGTN. (2024, December 28). *30 years left? AI "Godfather" warns the technology may end humanity*. https://newseu.cgtn.com/news/2024-12-28/AI-Godfather-warns-rapid-development-can-cause-human-extinction-1zHEIq63EDC/index.html
 - Dietterich, T. G. (2000). Ensemble methods in machine learning. In *Multiple classifier systems* (pp. 1-15). Springer. https://web.engr.oregonstate.edu/~tgd/publications/mcs-ensembles.pdf
-- European Commission. (2019). *Ethics guidelines for trustworthy AI*. High-Level Expert Group on Artificial Intelligence. https://www.europarl.europa.eu/cmsdata/196377/AI%20HLEG_Ethics%20Guidelines%20for%20Trustworthy%20AI.pdf
+- European Commission. (2019). *Ethics guidelines for trustworthy AI*. High-Level Expert Group on Artificial Intelligence. https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai
 - European Union. (2024). *Regulation (EU) 2024/1689 (Artificial Intelligence Act), Article 14: Human oversight*. Official Journal of the European Union. https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng
 - Harper, D. (n.d.). Govern. In *Online etymology dictionary*. https://www.etymonline.com/word/govern
 - Henrich, J., Heine, S. J., & Norenzayan, A. (2010). The weirdest people in the world? *Behavioral and Brain Sciences, 33*(2-3), 61-83. https://www2.psych.ubc.ca/~henrich/pdfs/WeirdPeople.pdf
@@ -429,7 +425,7 @@ Puglisi, B. C. (2026n, January 1). *What we failed to define is how we fail*. ba
 - Oxford English Dictionary. (n.d.). Govern, v. In *OED online*. Oxford University Press. https://www.oed.com/dictionary/govern_v
 - PBS. (2023, May 9). *Geoffrey Hinton warns of the "existential threat" of AI*. Amanpour and Company. https://www.pbs.org/video/godfather-of-ai-warns-of-the-existential-threat-of-ai-lj1i1c/
 - Tao, Y., Viberg, O., Baker, R. S., & Kizilcec, R. F. (2024). Cultural bias and cultural alignment of large language models. *PNAS Nexus, 3*(9), pgae346. https://pmc.ncbi.nlm.nih.gov/articles/PMC11407280/
-- UNESCO. (2021). *Recommendation on the Ethics of Artificial Intelligence*. https://unesdoc.unesco.org/ark:/48223/pf0000380455
+- UNESCO. (2021). *Recommendation on the Ethics of Artificial Intelligence*. https://www.unesco.org/en/legal-affairs/recommendation-ethics-artificial-intelligence
 
 Russell, S. (2019). *Human compatible: Artificial intelligence and the problem of control*. Viking.
 
