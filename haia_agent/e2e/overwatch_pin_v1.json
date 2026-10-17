@@ -1,0 +1,25 @@
+{
+  "schema": "haia.e2e.overwatch_pin.v1",
+  "suite": "haia_agent/e2e/test_e2e_gopel_overwatch_v1.py",
+  "settlement": "S7: the two pull requests merge together; this suite passes against exactly this pair",
+  "overwatch": {
+    "repository": "basilpuglisi/HAIA",
+    "branch": "claude/overwatch-v25",
+    "base": "basilpuglisi-overwatch",
+    "commit": "0916f44c23a6c4919f31da32608c0ebd4f25b9e6",
+    "package": "overwatch/overwatch_v25",
+    "version": "2.5.0"
+  },
+  "gopel": {
+    "repository": "basilpuglisi/HAIA",
+    "branch": "claude/vibrant-euler-q37a2d",
+    "base": "main",
+    "code_commit": "2fb1f93a6d58e0d614db518f05f48851f287d7f4",
+    "paths": [
+      "haia_agent/gopel_v063",
+      "haia_agent/e2e/test_e2e_gopel_overwatch_v1.py"
+    ],
+    "version": "0.6.3"
+  },
+  "how_to_run": "HAIA_OVERWATCH_TREE=<checkout of overwatch.commit> PYTHONDONTWRITEBYTECODE=1 python -m pytest -p no:cacheprovider haia_agent/e2e/test_e2e_gopel_overwatch_v1.py"
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "haia.e2e.overwatch_pin.v1",
+  "suite": "haia_agent/e2e/test_e2e_team_v1.py",
+  "settlement": "S7: the two pull requests merge together; this suite passes against exactly this pair",
+  "overwatch": {
+    "repository": "basilpuglisi/HAIA",
+    "branch": "claude/overwatch-v25",
+    "base": "basilpuglisi-overwatch",
+    "commit": "88b9623167eca39968803fe9f6ce2894c459b887",
+    "package": "overwatch/overwatch_v26",
+    "version": "2.6.0"
+  },
+  "code": {
+    "repository": "basilpuglisi/HAIA",
+    "branch": "claude/vibrant-euler-q37a2d",
+    "base": "main",
+    "commit": "96339b35e83ab10dc67e30259b1e9510e3c04161",
+    "paths": [
+      "haia_agent/gopel_v064",
+      "haia_agent/Models1to3/cbg_model1_russell_v5.py",
+      "haia_agent/Models1to3/cbg_gateway_model2_v11.py",
+      "haia_agent/Models1to3/test_cbg_gateway_model2_v11.py",
+      "haia_agent/e2e/test_e2e_team_v1.py"
+    ]
+  },
+  "gopel": {"package": "haia_agent/gopel_v064", "version": "0.6.4"},
+  "model1": {"module": "haia_agent/Models1to3/cbg_model1_russell_v5.py", "version": "CBG Model 1 Runner v5"},
+  "model2": {"module": "haia_agent/Models1to3/cbg_gateway_model2_v11.py", "version": "CBG Gateway v11"},
+  "how_to_run": "HAIA_OVERWATCH_TEAM_TREE=<checkout of overwatch.commit> PYTHONDONTWRITEBYTECODE=1 python -m pytest -p no:cacheprovider haia_agent/e2e/test_e2e_team_v1.py"
+}

@@ -1,0 +1,9 @@
+# GOPEL v0.6.4 dependency pins (Gate 1, step 26; addendum 15).
+# Floors for pydantic and cryptography match the versions the v0.6.4
+# suites were run with. Provider SDKs are needed only for live adapters;
+# the test suites replace them with stand-in modules.
+pydantic>=2.14
+cryptography>=50.0.2
+anthropic>=1.13,<2
+openai>=3.30,<4
+google-genai>=2.30,<3
